@@ -1,2 +1,59 @@
-# arch-linux-cmd
+= arch-linux-cmd
+
+
 Arch Linux Command Scripts
+
+I started using https://garudalinux.org/[Garuda] Linux, a distribution based on https://archlinux.org/[Arch] linux.
+
+Coming from Mac and https://linuxmint.com/[Mint] linux, I had lost some of my favourite commands.
+
+This repository is an attempt to make my life easier.
+
+I am sharing in-case it helps you too.
+
+
+== Java
+
+Applicable to any linux distribution. These scripts are as simple as possible
+
+.Java Command Example
+[source, bash]
+----
+java11.sh -jar /path/to/jar.jar
+----
+
+In essence, it checks to see which java is installed.
+
+The following is an exert from `java11.sh`
+
+.Checking For Java
+[source, bash]
+----
+## Check for open JDK
+if [ -d "/usr/lib/jvm/java-11-openjdk/bin" ]; then
+# Set the java env variables
+export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+----
+
+NOTE: There may be better ways to do it, it works for me.
+
+== Gradle
+
+Gradle chains the `java.sh` command with the gradle command.
+
+.Example: Running `gradle11.sh` (Java 11 + Gradle)
+[source,shell]
+----
+gradle11.sh clean springBootRun
+----
+
+== Maven
+
+Maven chains the `java.sh` command with the maven command.
+
+.Example: Running `mvn11.sh` (Java 11 + Maven)
+[source,bash]
+----
+mvn11.sh clean compile
+----
